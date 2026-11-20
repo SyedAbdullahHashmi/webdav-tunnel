@@ -1,0 +1,11 @@
+[Unit]
+Description=frp client (frpc) — tunnel to cloud VM
+After=network.target
+
+[Service]
+ExecStart=/opt/webdav-tunnel/frpc -c /opt/webdav-tunnel/frpc.toml
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,11 @@
+# local secrets / configs (never commit)
+restore.env
+*.toml
+!*.toml.example
+*.log
+# built binaries (keep the webdavd/ SOURCE dir, ignore only compiled output)
+/webdavd/webdavd
+webdavd-*
+/frpc
+/frps
+/scripts/restore.env

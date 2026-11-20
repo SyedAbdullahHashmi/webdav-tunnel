@@ -1,0 +1,19 @@
+# Caddyfile — automatic HTTPS reverse proxy. Runs on your cloud VM.
+# Caddy fetches and auto-renews a free, browser-trusted Let's Encrypt
+# certificate, so your WebDAV traffic is encrypted end to end.
+#
+# Copy to /etc/caddy/Caddyfile and edit before use.
+#
+# The hostname trick: if you don't own a domain, use sslip.io — it resolves
+# "<any-ip>.sslip.io" straight to that IP, so Let's Encrypt can issue a cert
+# for a bare IP VM with no DNS setup. Replace the IP below with your VM's.
+# (If you DO own a domain, just point an A record at the VM and use it here.)
+
+{
+    # Pin production Let's Encrypt explicitly.
+    acme_ca https://acme-v02.api.letsencrypt.org/directory
+}
+
+YOUR_VPS_PUBLIC_IP.sslip.io {
+    reverse_proxy 127.0.0.1:8080
+}

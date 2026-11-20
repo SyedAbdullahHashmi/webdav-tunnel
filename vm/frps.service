@@ -1,0 +1,11 @@
+[Unit]
+Description=frp server (frps)
+After=network.target
+
+[Service]
+ExecStart=/opt/frp/frps -c /opt/frp/frps.toml
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target

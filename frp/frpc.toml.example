@@ -1,0 +1,30 @@
+# frpc.toml — FRP CLIENT config. Runs on the device that holds your storage
+# (Raspberry Pi, NAS, home server, or a router you administer).
+# It dials out to your VM, so the device needs no public IP and no inbound
+# port-forwarding — it works behind CGNAT / most home routers.
+#
+# Copy to frpc.toml and edit before use.
+
+serverAddr = "YOUR_VPS_PUBLIC_IP"   # public IP (or hostname) of your cloud VM
+serverPort = 7000                   # must match frps bindPort
+
+# Keep retrying instead of exiting if the VM is briefly unreachable.
+loginFailExit = false
+
+# Must match frps auth.token exactly.
+auth.method = "token"
+auth.token = "CHANGE_ME_SAME_TOKEN_AS_FRPS"
+
+# Latency/throughput tuning (safe defaults).
+transport.poolCount = 5
+transport.tcpMux = true
+transport.tcpMuxKeepaliveInterval = 30
+
+# Expose the local WebDAV server (127.0.0.1:8080 on the device) on the VM's
+# public port 8080. Caddy (see vm/Caddyfile.example) then wraps it in HTTPS.
+[[proxies]]
+name = "webdav"
+type = "tcp"
+localIP = "127.0.0.1"
+localPort = 8080
+remotePort = 8080

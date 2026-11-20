@@ -1,0 +1,12 @@
+# frps.toml — FRP SERVER config. Runs on your public cloud VM.
+# Docs: https://github.com/fatedier/frp
+#
+# Copy to frps.toml and edit before use.
+
+# Port the frp client (frpc) on your device connects to.
+bindPort = 7000
+
+# Shared secret. BOTH frps and frpc must use the same token.
+# Generate a strong one:  openssl rand -hex 16
+auth.method = "token"
+auth.token = "CHANGE_ME_GENERATE_WITH_openssl_rand_hex_16"

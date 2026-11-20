@@ -1,0 +1,12 @@
+[Unit]
+Description=webdavd (WebDAV server for local storage)
+After=network.target
+
+[Service]
+# Edit the path, root dir, and credentials for your device.
+ExecStart=/opt/webdav-tunnel/webdavd -addr 0.0.0.0:8080 -root /srv/storage -user CHANGE_ME_USER -pass CHANGE_ME_PASS
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target
