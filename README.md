@@ -204,6 +204,13 @@ is more reliable for read-write.
 
 ---
 
+## Stuck adapting it to your device?
+
+A few steps depend on your exact hardware/OS/provider (cross-compile target,
+boot-time auto-start, firewall rules). [`ASSISTANT-PROMPT.md`](ASSISTANT-PROMPT.md)
+has a fill-in-the-blanks prompt you can paste into an AI coding assistant to work
+through those for your own setup.
+
 ## Security notes
 
 - **Change every default credential** on your device and VM before exposing it.
